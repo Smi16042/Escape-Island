@@ -12,34 +12,62 @@ public class InteractWithEnviromentView extends View {
 
     Actor max = Actor.MonsterZombie;
 
-
     public boolean doAction(String[] inputs) {
+
+        Location currentLocation
+                = EscapeIsland.getCurrentGame().getMap().getLocations()
+                [Actor.Hero.getActorcoordinates().x]
+                [Actor.Hero.getActorcoordinates().y];
 
         char interactionsMenu = inputs[0].trim().toUpperCase().charAt(0);
 
         switch (interactionsMenu) {
             case 'C':
-                combatControls();
+                if (currentLocation.getActor() != null) {
+                    combatControls();
+                } else {
+                    System.out.println("Invalid Option");
+                }
                 break;
             case 'I':
-                itemRequiredScene();
+                if (currentLocation.getActor() != null) {
+                    itemRequiredScene();
+                } else {
+                    System.out.println("Invalid Option");
+                }
                 break;
             case 'L':
-                getLoot();
+                if (currentLocation.getActor() != null) {
+                    getLoot();
+                } else {
+                    System.out.println("Invalid Option");
+                }
                 break;
             case 'T':
-                talkToNPC();
+                if (currentLocation.getActor() != null) {
+                    talkToNPC();
+                } else {
+                    System.out.println("Invalid Option");
+                }
                 break;
             case 'P':
-                puzzle();
+                if (currentLocation.getActor() != null) {
+                    puzzle();
+                } else {
+                    System.out.println("Invalid Option");
+                }
                 break;
             case 'R':
-                riddle(EscapeIsland.getCurrentGame().getMap().getLocations()
-                        [(int) Actor.Hero.getActorcoordinates().getY()]
-                        [(int) Actor.Hero.getActorcoordinates().getX()]
-                        .getRiddle());
+                if (currentLocation.getActor() != null) {
+                    riddle(EscapeIsland.getCurrentGame().getMap().getLocations()
+                            [(int) Actor.Hero.getActorcoordinates().getY()]
+                            [(int) Actor.Hero.getActorcoordinates().getX()]
+                            .getRiddle());
+                } else {
+                    System.out.println("Invalid Option");
+                }
                 break;
-            case 'Q':
+            case 'M':
                 return true;
             default:
                 System.out.println("Invalid Option");
@@ -51,18 +79,32 @@ public class InteractWithEnviromentView extends View {
     public String[] getInputs() {
         String[] inputs = new String[1];
 
+        Location currentLocation
+                = EscapeIsland.getCurrentGame().getMap().getLocations()[Actor.Hero.getActorcoordinates().x][Actor.Hero.getActorcoordinates().y];
+
         System.out.println("***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
                 + "\n* Interactions                                            *"
-                + "\n*                                                         *"
-                + "\n* C - Combat                                              *"
-                + "\n* I - Item Required                                       *"
-                + "\n* L - Loot                                                *"
-                + "\n* T - Talk                                                *"
-                + "\n* P - Puzzle                                              *"
-                + "\n* R - Riddle                                              *"
-                + "\n* Q - Quit to Game Menu                                   *"
+                + "\n*                                                         *");
+
+        if (currentLocation.getActor() != null) {
+            System.out.println("* C - Combat ");
+        };
+        if (currentLocation.getItemRequired() != null) {
+            System.out.println("* I - Item Required");
+        }
+        if (currentLocation.getObtainItem() != null) {
+            System.out.println("* L - Loot");
+        }
+        if (currentLocation.getTalkToNPC() != null) {
+            System.out.println("* T - Talk");
+        }
+        if (currentLocation.getRiddle() != null) {
+            System.out.println("* R - Riddle");
+        }
+
+        System.out.println("\n* M - Return to map                                        *"
                 + "\n*                                                         *"
                 + "\n***********************************************************"
                 + "\n***********************************************************");
@@ -91,11 +133,17 @@ public class InteractWithEnviromentView extends View {
     }
 
     private void itemRequiredScene() {
-        if (max.getCurrentItem() != Item.ToolKit) {
+        
+        Location currentLocation
+                = EscapeIsland.getCurrentGame().getMap().getLocations()
+                [Actor.Hero.getActorcoordinates().x]
+                [Actor.Hero.getActorcoordinates().y];
+        
+        if (Actor.Hero.getCurrentItem() != currentLocation.getItemRequired()) {
             System.out.println("\n***********************************************************"
                     + "\n***********************************************************"
                     + "\n*                                                         *"
-                    + "\n*The " + Item.ToolKit.getItemName() + "                   *"
+                    + "\n*The " + currentLocation.getItemRequired().getItemName() + "                   *"
                     + "\n*is required to progress                                  *"
                     + "\n                                                          *"
                     + "\n***********************************************************"
@@ -105,7 +153,7 @@ public class InteractWithEnviromentView extends View {
             System.out.println("\n***********************************************************"
                     + "\n***********************************************************"
                     + "\n*                                                         *"
-                    + "\n*The " + Item.ToolKit.getItemName() + "                   *"
+                    + "\n*The " + currentLocation.getItemRequired().getItemName() + "                   *"
                     + "\n* allowed you to progress.                                *"
                     + "\n*                                                         *"
                     + "\n***********************************************************"
@@ -114,10 +162,16 @@ public class InteractWithEnviromentView extends View {
     }
 
     private void getLoot() {
+        
+        Location currentLocation
+                = EscapeIsland.getCurrentGame().getMap().getLocations()
+                [Actor.Hero.getActorcoordinates().x]
+                [Actor.Hero.getActorcoordinates().y];
+        
         System.out.println("\n***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
-                + "\n*Congradulations you have obtained " + Item.Sword.getItemName() + "        *"
+                + "\n*Congradulations you have obtained " + currentLocation.getObtainItem().getItemName()+ "        *"
                 + "\n*                                                         *"
                 + "\n***********************************************************"
                 + "\n***********************************************************");
@@ -185,16 +239,16 @@ public class InteractWithEnviromentView extends View {
                 + "\n***********************************************************"
                 + "\n*                                                         *"
                 + "\n*                                                         *"
-                + riddle 
+                + riddle
                 + "\n*                                                         *"
                 + "\n*                                                         *"
                 + "\n***********************************************************"
                 + "\n***********************************************************");
-        
+
         Scanner riddleScanner = new Scanner(System.in);
         String rScanner = riddleScanner.nextLine();
-        
-        if( rScanner == riddle.getAnswer()){
+
+        if (rScanner == riddle.getAnswer()) {
             System.out.println("Correct!");
             riddle.setRiddleDone(true);
         } else {
