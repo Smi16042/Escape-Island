@@ -68,13 +68,9 @@ public class MapView extends View {
 
     public void displayMap(Map map) {
 
-        System.out.println(EscapeIsland.getCurrentPlayer().getActor().getActorcoordinates().x);
-        System.out.println(EscapeIsland.getCurrentPlayer().getActor().getActorcoordinates().y);
         Location[][] locations = map.getLocations();
 
         System.out.println("*** displayMap called ***");
-
-        map.getLocations();
 
         System.out.println("     Mysterious Island");
 
@@ -88,8 +84,7 @@ public class MapView extends View {
         for (int i = 0; i < map.getRowCount(); i++) {
             if (i < 9) {
                 System.out.print((i + 1) + " ");
-            }
-            else {
+            } else {
                 System.out.print(i + 1);
             }
 
@@ -139,10 +134,17 @@ public class MapView extends View {
         int newRow = hero.getActorcoordinates().x - 1;
         int newColumn = hero.getActorcoordinates().y;
 
-        try {
-            MapControl.moveActor(hero, newRow, newColumn);
-        } catch (MapControlException ex) {
-            System.out.println(ex.getMessage());
+        map.getLocations()[newRow][newColumn].setVisited(true);
+        if (!map.getLocations()[newRow][newColumn].isBlocked()) {
+
+            try {
+                MapControl.moveActor(hero, newRow, newColumn);
+            } catch (MapControlException ex) {
+                System.out.println(ex.getMessage());
+            }
+
+        } else {
+            System.out.println("The tile is blocked");
         }
     }
 
@@ -150,10 +152,18 @@ public class MapView extends View {
         Actor hero = player.getActor();
         int newRow = hero.getActorcoordinates().x;
         int newColumn = hero.getActorcoordinates().y + 1;
-        try {
-            MapControl.moveActor(hero, newRow, newColumn);
-        } catch (MapControlException ex) {
-            System.out.println(ex.getMessage());
+
+        map.getLocations()[newRow][newColumn].setVisited(true);
+        if (!map.getLocations()[newRow][newColumn].isBlocked()) {
+
+            try {
+                MapControl.moveActor(hero, newRow, newColumn);
+            } catch (MapControlException ex) {
+                System.out.println(ex.getMessage());
+            }
+
+        } else {
+            System.out.println("The tile is blocked");
         }
     }
 
@@ -161,23 +171,39 @@ public class MapView extends View {
         Actor hero = player.getActor();
         int newRow = hero.getActorcoordinates().x + 1;
         int newColumn = hero.getActorcoordinates().y;
-        try {
-            MapControl.moveActor(hero, newRow, newColumn);
-        } catch (MapControlException ex) {
-            System.out.println(ex.getMessage());
+        map.getLocations()[newRow][newColumn].setVisited(true);
+        if (!map.getLocations()[newRow][newColumn].isBlocked()) {
+
+            try {
+                MapControl.moveActor(hero, newRow, newColumn);
+            } catch (MapControlException ex) {
+                System.out.println(ex.getMessage());
+            }
+
+        } else {
+            System.out.println("The tile is blocked");
         }
     }
+
+    
 
     private void moveWest(Player player, Map map) {
         Actor hero = player.getActor();
         int newRow = hero.getActorcoordinates().x;
         int newColumn = hero.getActorcoordinates().y - 1;
-        try {
-            MapControl.moveActor(hero, newRow, newColumn);
-        } catch (MapControlException ex) {
-            System.out.println(ex.getMessage());
+        map.getLocations()[newRow][newColumn].setVisited(true);
+        if (!map.getLocations()[newRow][newColumn].isBlocked()) {
 
+            try {
+                MapControl.moveActor(hero, newRow, newColumn);
+            } catch (MapControlException ex) {
+                System.out.println(ex.getMessage());
+            }
+
+        } else {
+            System.out.println("The tile is blocked");
         }
+
     }
 
     public void viewMap(Map map) {

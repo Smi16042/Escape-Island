@@ -990,6 +990,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[1][6] = location;
         location.setBackgroundType(BackgroundType.Mountain);
         location.setColumn(6);
@@ -1004,6 +1005,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[2][6] = location;
         location.setBackgroundType(BackgroundType.Mountain);
         location.setColumn(6);
@@ -1018,6 +1020,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[3][6] = location;
         location.setBackgroundType(BackgroundType.Mountain);
         location.setColumn(6);
@@ -1032,6 +1035,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[4][6] = location;
         location.setBackgroundType(BackgroundType.Mountain);
         location.setColumn(6);
@@ -1046,6 +1050,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[5][6] = location;
         location.setBackgroundType(BackgroundType.Ocean);
         location.setColumn(6);
@@ -1060,6 +1065,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[6][6] = location;
         location.setBackgroundType(BackgroundType.Forest);
         location.setColumn(6);
@@ -1074,6 +1080,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[7][6] = location;
         location.setBackgroundType(BackgroundType.Beach);
         location.setColumn(6);
@@ -1088,6 +1095,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[8][6] = location;
         location.setBackgroundType(BackgroundType.Beach);
         location.setColumn(6);
@@ -1102,10 +1110,11 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[9][6] = location;
         location.setBackgroundType(BackgroundType.Ocean);
         location.setColumn(6);
-        location.setRow(8);
+        location.setRow(9);
         location.setBlocked(true);
         location.setComplete(true);
         location.setVisited(false);
@@ -1118,6 +1127,7 @@ public class MapControl {
         
         // Line 7
         
+        location = new Location();
         locations[0][7] = location;
         location.setBackgroundType(BackgroundType.Ocean);
         location.setColumn(7);
@@ -1132,6 +1142,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[1][7] = location;
         location.setBackgroundType(BackgroundType.Mountain);
         location.setColumn(7);
@@ -1161,6 +1172,7 @@ public class MapControl {
         location.setObtainItem(Item.HamRadioManual);
         location.setTalkToNPC(Actor.PrisonGuard);
         
+        location = new Location();
         locations[3][7] = location;
         location.setBackgroundType(BackgroundType.Mountain);
         location.setColumn(7);
@@ -1175,6 +1187,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[4][7] = location;
         location.setBackgroundType(BackgroundType.Mountain);
         location.setColumn(7);
@@ -1204,6 +1217,7 @@ public class MapControl {
         location.setObtainItem(Item.Key);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[6][7] = location;
         location.setBackgroundType(BackgroundType.Forest);
         location.setColumn(7);
@@ -1218,6 +1232,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[7][7] = location;
         location.setBackgroundType(BackgroundType.Beach);
         location.setColumn(7);
@@ -1232,6 +1247,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[8][7] = location;
         location.setBackgroundType(BackgroundType.Beach);
         location.setColumn(7);
@@ -1246,6 +1262,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[9][7] = location;
         location.setBackgroundType(BackgroundType.Ocean);
         location.setColumn(7);
@@ -1277,6 +1294,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[1][8] = location;
         location.setBackgroundType(BackgroundType.Mountain);
         location.setColumn(8);
@@ -1291,6 +1309,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[2][8] = location;
         location.setBackgroundType(BackgroundType.Mountain);
         location.setColumn(8);
@@ -1305,6 +1324,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[3][8] = location;
         location.setBackgroundType(BackgroundType.Mountain);
         location.setColumn(8);
@@ -1319,6 +1339,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[4][8] = location;
         location.setBackgroundType(BackgroundType.Mountain);
         location.setColumn(8);
@@ -1333,6 +1354,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[5][8] = location;
         location.setBackgroundType(BackgroundType.Ocean);
         location.setColumn(8);
@@ -1347,6 +1369,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[6][8] = location;
         location.setBackgroundType(BackgroundType.Beach);
         location.setColumn(8);
@@ -1361,6 +1384,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[7][8] = location;
         location.setBackgroundType(BackgroundType.Beach);
         location.setColumn(8);
@@ -1375,6 +1399,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[8][8] = location;
         location.setBackgroundType(BackgroundType.Beach);
         location.setColumn(8);
@@ -1389,6 +1414,7 @@ public class MapControl {
         location.setObtainItem(null);
         location.setTalkToNPC(null);
         
+        location = new Location();
         locations[9][8] = location;
         location.setBackgroundType(BackgroundType.Ocean);
         location.setColumn(8);
@@ -1405,6 +1431,7 @@ public class MapControl {
         
         // line 9
         
+        location = new Location();
         locations[0][9] = location;
         location.setBackgroundType(BackgroundType.Ocean);
         location.setColumn(9);
@@ -1564,7 +1591,7 @@ public class MapControl {
 
     public static void assignActorsToLocations(Location[][] hank)
             throws MapControlException {
-        System.out.println(" *** assignActorsToLocations called ***");
+        System.out.println("*** assignActorsToLocations called ***");
 
         if (hank == null) {
             System.out.println("hank is null");
@@ -1574,7 +1601,7 @@ public class MapControl {
 
     public static void assignItemsToLocations(Location[][] locations)
             throws MapControlException {
-        System.out.println(" *** assignItemToLocations called ***");
+        System.out.println("*** assignItemToLocations called ***");
 
         if (locations == null) {
             System.out.println("locations is null");
