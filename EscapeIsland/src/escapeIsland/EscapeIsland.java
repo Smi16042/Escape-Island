@@ -3,6 +3,12 @@ package escapeIsland;
 import model.*;
 import control.*;
 import static control.GameControl.createRiddles;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import view.StartProgramView;
 import view.GameMenuView;
 
@@ -14,6 +20,9 @@ public class EscapeIsland {
 
     private static Game currentGame = null;
     private static Player currentPlayer;
+
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
 
     public static Game getCurrentGame() {
         return currentGame;
@@ -32,19 +41,47 @@ public class EscapeIsland {
     }
 
     public static void main(String[] args) {
-        EscapeIsland adidas = new EscapeIsland();
-        GameControl gameControl = new GameControl();
-        
+
+        try {
+
+            EscapeIsland.inFile = new BufferedReader(new InputStreamReader(System.in));
+            EscapeIsland.outFile = new PrintWriter(System.out, true);
+
+            EscapeIsland adidas = new EscapeIsland();
+            GameControl gameControl = new GameControl();
+
+            StartProgramView startProgramView = new StartProgramView();
+            startProgramView.display();
+
+            gameControl.riddleArrayList();
+
+        } catch (Throwable e) {
+            System.out.println("Exception: " + e.toString()
+                    + "\nCause: " + e.getCause()
+                    + "\nMessage: " + e.getMessage());
+
+            e.printStackTrace();;
+        } finally {
+            try {
+                if (EscapeIsland.inFile != null) {
+                    EscapeIsland.inFile.close();
+                }
+                if (EscapeIsland.outFile != null) {
+                    EscapeIsland.outFile.close();
+                }
+            } catch (IOException ex) {
+                System.out.println("Error closing files");
+                return;
+            }
+        }
+
 //Riddle[] riddle = createRiddles();
-
 //        Location[][] location = gameControl.createLocations(6, 6, riddle);
-
 //        if (location[0][0] != null) {
 //            System.out.println(-1);
 //        }
 //
 //        System.out.println(location[0][0].getBackgroundType());
-
 // System.out.println(derp[0][1].getBackgroundType());
 //        for(Location[] la: derp) {
 //              for(Location l : derp[0]){
@@ -53,16 +90,6 @@ public class EscapeIsland {
 //                }
 //              }
 //          }
-
-
-
-
-        StartProgramView startProgramView = new StartProgramView();
-        startProgramView.display();
-        
-        gameControl.riddleArrayList();
-        
-
 //        GameMenuView gameMenuView = new GameMenuView();
 //        gameMenuView.displayGameMenuView(player, map);
 //        gameMenuView.openMap(map);
@@ -98,5 +125,21 @@ public class EscapeIsland {
 //        Riddle question1 = new Riddle("favorite color","blue");
 //        
 //        System.out.println(question1.toString());
+    }
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        EscapeIsland.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        EscapeIsland.inFile = inFile;
     }
 }

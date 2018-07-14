@@ -1,5 +1,8 @@
 package view;
 
+import escapeIsland.EscapeIsland;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 /**
  *
@@ -7,7 +10,10 @@ import java.util.Scanner;
  */
 public abstract class View implements ViewInterface {
 
-  
+    private String message;
+    
+    protected final BufferedReader keyboard = EscapeIsland.getInFile();
+    protected final PrintWriter console = EscapeIsland.getOutFile();
 
     public View() {
     }

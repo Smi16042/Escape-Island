@@ -317,7 +317,7 @@ public class MapControl {
         location.setActor(null);
         location.setRiddle(null);
         location.setItemRequired(null);
-        location.setObtainItem(null);
+        location.setObtainItem(Item.Bat);
         location.setTalkToNPC(null);
 
         location = new Location();
@@ -329,10 +329,10 @@ public class MapControl {
         location.setComplete(false);
         location.setVisited(false);
         location.setDescription("Beach");
-        location.setActor(null);
+        location.setActor(Actor.MonsterGoblin);
         location.setRiddle(null);
         location.setItemRequired(null);
-        location.setObtainItem(null);
+        location.setObtainItem(Item.CrockpotLid);
         location.setTalkToNPC(null);
         
         location = new Location();
@@ -469,23 +469,8 @@ public class MapControl {
         location.setActor(null);
         location.setRiddle(null);
         location.setItemRequired(null);
-        location.setObtainItem(null);
-        location.setTalkToNPC(null);
-        
-        location = new Location();
-        locations[7][2] = location;
-        location.setBackgroundType(BackgroundType.Camp);
-        location.setColumn(2);
-        location.setRow(7);
-        location.setBlocked(false);
-        location.setComplete(false);
-        location.setVisited(false);
-        location.setDescription("Camp");
-        location.setActor(null);
-        location.setRiddle(null);
-        location.setItemRequired(null);
-        location.setObtainItem(null);
-        location.setTalkToNPC(null);
+        location.setObtainItem(Item.Bat);
+        location.setTalkToNPC(Actor.OldMan);
         
         location = new Location();
         locations[8][2] = location;
@@ -496,7 +481,7 @@ public class MapControl {
         location.setComplete(false);
         location.setVisited(false);
         location.setDescription("beach");
-        location.setActor(null);
+        location.setActor(Actor.MonsterGoblin);
         location.setRiddle(null);
         location.setItemRequired(null);
         location.setObtainItem(null);
@@ -627,17 +612,17 @@ public class MapControl {
         
         location = new Location();
         locations[7][3] = location;
-        location.setBackgroundType(BackgroundType.Forest);
+        location.setBackgroundType(BackgroundType.Camp);
         location.setColumn(3);
         location.setRow(7);
         location.setBlocked(false);
         location.setComplete(false);
         location.setVisited(false);
         location.setDescription("Forest");
-        location.setActor(Actor.MonsterGoblin);
+        location.setActor(null);
         location.setRiddle(null);
         location.setItemRequired(null);
-        location.setObtainItem(Item.HamRadioManual);
+        location.setObtainItem(Item.CrockpotLid);
         location.setTalkToNPC(null);
         
         location = new Location();
@@ -1640,8 +1625,6 @@ public class MapControl {
             throw new MapControlException("location is blocked");
         }
 
-        oldLocation.setActor(null);
-        newLocation.setActor(actor);
         currentCoordinates.x = newRow;
         currentCoordinates.y = newColumn;
 

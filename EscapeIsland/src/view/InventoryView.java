@@ -73,10 +73,11 @@ public class InventoryView extends View {
 
     public String[] getInputs() {
 
-        // Temporary until we create the Actor for the player
+        
         Actor player = Actor.Hero;
         ArrayList<Item> inventory = player.getActorItems();
-
+        
+        inventory.add(Item.fisticuffs);
         inventory.add(Item.ToolKit);
         inventory.add(Item.LeadPipe);
         inventory.add(Item.KiteShield);
@@ -122,5 +123,4 @@ public class InventoryView extends View {
         }
 
     }
-
 }

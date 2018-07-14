@@ -15,10 +15,11 @@ import java.io.Serializable;
 public enum Item implements Serializable {
 
     // combat items
-    Stick("Stick", "Weapon", "A study peice of oak", "Attack", 1, 0 ),
-    LeadPipe("Lead Pipe", "Weapon", "A decaying peice of construction", "Attack", 2,0 ),
-    Bat("Bat", "Weapon", "A standard baseball bat", "Attack", 3,0 ),
-    Sword("Sword", "Weapon", "A medieval longsword", "Attack", 4,0 ),
+    fisticuffs("Fistifcuffs","StartItem", "Your fists", "Attack", 1,1 ),
+    Stick("Stick", "Weapon", "A study peice of oak", "Attack", 2, 0 ),
+    LeadPipe("Lead Pipe", "Weapon", "A decaying peice of construction", "Attack", 3,0 ),
+    Bat("Bat", "Weapon", "A standard baseball bat", "Attack", 4,0 ),
+    Sword("Sword", "Weapon", "A medieval longsword", "Attack", 5,0 ),
     
     CrockpotLid("Crock-pot Lid", "Shield", "A old crock-pot lid", "Defense", 0,1 ),
     PantryDoor("Pantry Door", "Shield", "Half of a pantry door", "Defense", 0,2 ),

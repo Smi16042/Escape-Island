@@ -93,7 +93,7 @@ public class MapView extends View {
 
                     if (i == EscapeIsland.getCurrentPlayer().getActor().getActorcoordinates().x
                             && j == EscapeIsland.getCurrentPlayer().getActor().getActorcoordinates().y) {
-                        System.out.print("| H ");
+                        System.out.print("|[H]");
                     } else {
                         System.out.print("| " + locations[i][j].getBackgroundType().getPrintValue() + " ");
                     }

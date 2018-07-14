@@ -11,6 +11,7 @@ import exceptions.CombatControlException;
  *
  * @author collin
  */
+
 public class CombatControl {
      
     public static double calcSpeed(double actorEnemySpeed, double actorPlayerSpeed, double actorItem) 
