@@ -5,6 +5,7 @@ import java.util.Scanner;
 import model.*;
 import view.BattleScene.*;
 import java.util.Random;
+import java.awt.Point;
 
 /**
  *
@@ -22,41 +23,35 @@ public class InteractWithEnviromentView extends View {
         switch (interactionsMenu) {
             case 'C':
                 if (currentLocation.getActor() != null) {
-                    combatControls();
+                    if (combatControls())
+                        return false;
                 } else {
                     System.out.println("Invalid Option");
                 }
                 break;
             case 'I':
-                if (currentLocation.getActor() != null) {
+                if (currentLocation.getItemRequired()!= null) {
                     itemRequiredScene();
                 } else {
                     System.out.println("Invalid Option");
                 }
                 break;
             case 'L':
-                if (currentLocation.getActor() != null) {
+                if (currentLocation.getObtainItem()!= null) {
                     getLoot();
                 } else {
                     System.out.println("Invalid Option");
                 }
                 break;
             case 'T':
-                if (currentLocation.getActor() != null) {
+                if (currentLocation.getTalkToNPC()!= null) {
                     talkToNPC();
                 } else {
                     System.out.println("Invalid Option");
                 }
                 break;
-            case 'P':
-                if (currentLocation.getActor() != null) {
-                    puzzle();
-                } else {
-                    System.out.println("Invalid Option");
-                }
-                break;
             case 'R':
-                if (currentLocation.getActor() != null) {
+                if (currentLocation.getRiddle()!= null) {
                     riddle(EscapeIsland.getCurrentGame().getMap().getLocations()[(int) Actor.Hero.getActorcoordinates().getY()][(int) Actor.Hero.getActorcoordinates().getX()]
                             .getRiddle());
                 } else {
@@ -158,28 +153,42 @@ public class InteractWithEnviromentView extends View {
                     attack(hero, monster);
                     break;
 
-                case 'B':
+                case 'D':
                     defend(hero, monster);
                     break;
 
-                case 'C':
+                case 'I':
                     item();
                     break;
 
                 case 'F':
-                   return true;
+                   return false;
 
               
                 default:
                     System.out.println("Invalid Option");
 
             }
+            
+            if (combatAI(monster)) {
+                attack(monster, hero);
+            }
+            else {
+                defend(monster, hero);
+            }
+            
+            if (BattleScene.death(Actor.Hero)) {
+                Actor.Hero.setActorCoordinates(new Point(7, 2));
+                Actor.Hero.setActorHitPoints(15);
+                return true;
+            }
+            
         }
             return false;
     }
     
      private void attack(Actor attacker, Actor defender) {
-        BattleScene.calcDamage(BattleScene.totalAttack(attacker), BattleScene.totalDefense(defender));
+        BattleScene.damageTaken(defender, BattleScene.calcDamage(BattleScene.totalAttack(attacker), BattleScene.totalDefense(defender)));
     }
 
     private void defend(Actor hero, Actor monster) {
@@ -190,16 +199,15 @@ public class InteractWithEnviromentView extends View {
         
     }
     
-    private void combatAI(Actor attacker, Actor defender) {
+    private boolean combatAI(Actor monster) {
         
         Random combatAI = new Random();
         
         int n = combatAI.nextInt(2) + 1;
         
-       if(n == 1){
-           defend(attacker, defender);
-       }else
-           attack(attacker, defender);
+       if(n <= 1)
+           return true;
+       return false;
     }
     
     

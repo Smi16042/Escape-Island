@@ -16,15 +16,15 @@ import java.util.ArrayList;
 public enum Actor implements Serializable {
     
  
- MonsterZombie("Zombie" , new Point(1,1),"a frightful zombie", 3, 2, 2, 10 ),
- MonsterSkeleton("Skeleton" , new Point(1,1),"a terrifying skeleton", 2, 3, 2, 10 ),
- MonsterGoblin("Goblin" , new Point(1,1),"a spooky goblin", 2, 2, 3, 10 ),
- PrisonGuard("Erik" , new Point(2,2), "a tired prison guard", 2, 2, 1, 10 ),
- Inmate02("Inmate02" , new Point(2,2), "an enraged prison inmate", 3, 3, 1, 10 ),
- Inmate09("Inmate09" , new Point(2,2), "an enraged prison inmate", 2, 3, 1, 10 ),
- Inmate08("Inmate08" , new Point(2,2), "an enraged prison inmate", 4, 1, 1, 10 ),
- OldMan("Magnus Stone" , new Point(7,2),"a lonesome old man trapped on the island", 10, 10, 10, 50 ),
- Hero("Hero" , new Point(7,2), "The hero", 1, 1, 1, 10);
+ MonsterZombie("Zombie" , new Point(1,1),"a frightful zombie", 3, 2, 2, 10, Item.fisticuffs ),
+ MonsterSkeleton("Skeleton" , new Point(1,1),"a terrifying skeleton", 2, 3, 2, 10, Item.fisticuffs ),
+ MonsterGoblin("Goblin" , new Point(1,1),"a spooky goblin", 1, 1, 1, 10, Item.fisticuffs ),
+ PrisonGuard("Erik" , new Point(2,2), "a tired prison guard", 2, 2, 1, 10, Item.fisticuffs ),
+ Inmate02("Inmate02" , new Point(2,2), "an enraged prison inmate", 3, 3, 1, 10, Item.fisticuffs ),
+ Inmate09("Inmate09" , new Point(2,2), "an enraged prison inmate", 2, 3, 1, 10, Item.fisticuffs ),
+ Inmate08("Inmate08" , new Point(2,2), "an enraged prison inmate", 4, 1, 1, 10, Item.fisticuffs ),
+ OldMan("Magnus Stone" , new Point(7,2),"a lonesome old man trapped on the island", 10, 10, 10, 50, Item.Sword ),
+ Hero("Hero" , new Point(7,2), "The hero", 4, 4, 2, 15, Item.fisticuffs);
 
 private String actorName;
 private Point actorcoordinates;
@@ -40,7 +40,7 @@ private long actorHitPoints;
     }
 
 
-    private Actor(String actorName, Point actorcoordinates, String actorDescription, long actorAttack, long actorDefense, long actorSpeed, long actorHitPoints) {
+    private Actor(String actorName, Point actorcoordinates, String actorDescription, long actorAttack, long actorDefense, long actorSpeed, long actorHitPoints, Item currentItem) {
         this.actorName = actorName; 
         this.actorcoordinates = actorcoordinates;
         this.actorDescription = actorDescription;
@@ -48,6 +48,7 @@ private long actorHitPoints;
         this.actorDefense = actorDefense;
         this.actorSpeed = actorSpeed;
         this.actorHitPoints = actorHitPoints;
+        this.currentItem = currentItem;
  }
 
     public long getActorHitPoints() {
@@ -93,6 +94,10 @@ private long actorHitPoints;
 
     public void setActorItems(ArrayList<Item> actorItems) {
         this.actorItems = actorItems;
+    }
+    
+    public void setActorCoordinates(Point newCoords) {
+        this.actorcoordinates = newCoords;
     }
 
     public Item getCurrentItem() {
