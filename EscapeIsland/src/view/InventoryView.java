@@ -74,14 +74,7 @@ public class InventoryView extends View {
     public String[] getInputs() {
 
         
-        Actor player = Actor.Hero;
-        ArrayList<Item> inventory = player.getActorItems();
-        
-        inventory.add(Item.fisticuffs);
-        inventory.add(Item.ToolKit);
-        inventory.add(Item.LeadPipe);
-        inventory.add(Item.KiteShield);
-        inventory.add(Item.Sword);
+
 
         // --- End of to do later
         System.out.println(
@@ -92,7 +85,7 @@ public class InventoryView extends View {
 
         System.out.println("* ");
         int num = 0;
-        for (Item item : inventory) {
+        for (Item item : EscapeIsland.getCurrentPlayer().getActor().getActorItems()) {
 
             num++; // add one to item number
             System.out.println(num + " - " + item.getItemName());

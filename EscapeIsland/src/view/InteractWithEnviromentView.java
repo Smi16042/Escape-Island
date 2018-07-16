@@ -251,6 +251,7 @@ public class InteractWithEnviromentView extends View {
         Actor player1 = EscapeIsland.getCurrentPlayer().getActor();
         try {
             InventoryControl.addItemToInventory(player1, currentLocation.getObtainItem());
+            
         } catch (InventoryControlException ex) {
             System.out.println(ex.getMessage());
         }
@@ -258,10 +259,12 @@ public class InteractWithEnviromentView extends View {
         System.out.println("\n***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
-                + "\n*Congradulations you have obtained " + currentLocation.getObtainItem().getItemName() + "        *"
+                + "\n*Congradulations you have obtained a(n)" + currentLocation.getObtainItem().getItemName() + "        *"
                 + "\n*                                                         *"
                 + "\n***********************************************************"
                 + "\n***********************************************************");
+        Location loc = EscapeIsland.getCurrentGame().getMap().getLocations()[Actor.Hero.getActorcoordinates().x][Actor.Hero.getActorcoordinates().y];
+         loc.setObtainItem(null);
         return;
     }
 
