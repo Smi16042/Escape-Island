@@ -51,19 +51,17 @@ public class BattleScene {
 
     public static boolean death(Actor actor) {
         if (actor.getActorHitPoints() <= 0) {
-            System.out.println("YOU HAVE DIED");
             return true;
         }
         return false;
     }
 
-    public static void defense(Actor actor, long damageTaken) {
+    public static long defense(Actor actor, long damageTaken) {
 
         long damage = damageTaken - BattleScene.totalDefense(actor) * 2;
         if (damage < 0) {
             damage = 1;
         }
-        actor.setActorHitPoints(actor.getActorHitPoints() - damage);
+        return damage;
     }
-
 }

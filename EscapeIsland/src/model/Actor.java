@@ -15,7 +15,10 @@ import java.util.ArrayList;
  */
 public enum Actor implements Serializable {
     
- 
+    
+ // each monster in mapcontrol location needs to be unique, aka MonsterGoblinJoe...
+ // or you can turn the enum into a template and create a monster class. I dont have enough time
+ // or I would do this. 
  MonsterZombie("Zombie" , new Point(1,1),"a frightful zombie", 3, 2, 2, 10, Item.fisticuffs ),
  MonsterSkeleton("Skeleton" , new Point(1,1),"a terrifying skeleton", 2, 3, 2, 10, Item.fisticuffs ),
  MonsterGoblin("Goblin" , new Point(1,1),"a spooky goblin", 1, 1, 1, 10, Item.fisticuffs ),
@@ -50,7 +53,8 @@ private long actorHitPoints;
         this.actorHitPoints = actorHitPoints;
         this.currentItem = currentItem;
  }
-
+    
+    
     public long getActorHitPoints() {
         return actorHitPoints;
     }
@@ -108,6 +112,9 @@ private long actorHitPoints;
         this.currentItem = currentItem;
     }
 
+    public void setActorName(String setActorName){
+        this.actorName = setActorName;
+    }
 
     
     

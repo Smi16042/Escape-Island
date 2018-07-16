@@ -76,7 +76,7 @@ public class EscapeIsland {
         }
 
 //Riddle[] riddle = createRiddles();
-//        Location[][] location = gameControl.createLocations(6, 6, riddle);
+//        Location[][] location = currentGame.getMap()..createLocations(6, 6, riddle);
 //        if (location[0][0] != null) {
 //            System.out.println(-1);
 //        }

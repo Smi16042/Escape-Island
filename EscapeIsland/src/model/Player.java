@@ -1,4 +1,3 @@
-
 package model;
 
 import java.io.Serializable;
@@ -21,7 +20,7 @@ public class Player implements Serializable {
     public void setPlayersName(String playersName) {
         this.playersName = playersName;
     }
-    
+
     public Actor getActor() {
         return actor;
     }
