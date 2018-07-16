@@ -27,35 +27,36 @@ public class InteractWithEnviromentView extends View {
         switch (interactionsMenu) {
             case 'C':
                 if (currentLocation.getActor() != null) {
-                    if (combatControls())
+                    if (combatControls()) {
                         return false;
+                    }
                 } else {
                     System.out.println("Invalid Option");
                 }
                 break;
             case 'I':
-                if (currentLocation.getItemRequired()!= null) {
+                if (currentLocation.getItemRequired() != null) {
                     itemRequiredScene();
                 } else {
                     System.out.println("Invalid Option");
                 }
                 break;
             case 'L':
-                if (currentLocation.getObtainItem()!= null) {
+                if (currentLocation.getObtainItem() != null) {
                     getLoot();
                 } else {
                     System.out.println("Invalid Option");
                 }
                 break;
             case 'T':
-                if (currentLocation.getTalkToNPC()!= null) {
+                if (currentLocation.getTalkToNPC() != null) {
                     talkToNPC();
                 } else {
                     System.out.println("Invalid Option");
                 }
                 break;
             case 'R':
-                if (currentLocation.getRiddle()!= null) {
+                if (currentLocation.getRiddle() != null) {
                     riddle(EscapeIsland.getCurrentGame().getMap().getLocations()[(int) Actor.Hero.getActorcoordinates().getY()][(int) Actor.Hero.getActorcoordinates().getX()]
                             .getRiddle());
                 } else {
@@ -113,40 +114,35 @@ public class InteractWithEnviromentView extends View {
 
     private boolean combatControls() {
 
-        Location location = EscapeIsland.getCurrentGame().getMap().getLocations()
-                [Actor.Hero.getActorcoordinates().x]
-                [Actor.Hero.getActorcoordinates().y];
-        
+        Location location = EscapeIsland.getCurrentGame().getMap().getLocations()[Actor.Hero.getActorcoordinates().x][Actor.Hero.getActorcoordinates().y];
+
         Actor monster = location.getActor();
-        while(!(BattleScene.death(Actor.Hero) || BattleScene.death(monster)) ){
-            
-        Actor hero = EscapeIsland.getCurrentPlayer().getActor();
-            
-        System.out.println("***********************************************************"
-                + "\n***********************************************************"
-                + "\n*                                                         *"
-                + "\n*      Combat Scene                                       *"
-                + "\n*                                                         *");
+        while (deathScene(Actor.Hero, monster)) {
 
+            Actor hero = EscapeIsland.getCurrentPlayer().getActor();
 
-        // get Hero Current HP, attack and defense
-        System.out.println(EscapeIsland.getCurrentPlayer().getPlayersName() + "                                      " + monster.getActorName());
-        System.out.println("Hit Points: " + Actor.Hero.getActorHitPoints() + "                            " + "Hit Points: " + monster.getActorHitPoints());
-        System.out.println("Attack: " + BattleScene.totalAttack(Actor.Hero) + "                                 " + "Attack: " + BattleScene.totalAttack(monster));
-        System.out.println("Defense: " + BattleScene.totalDefense(Actor.Hero) + "                                " + "Defense: " + BattleScene.totalDefense(monster));
+            System.out.println("***********************************************************"
+                    + "\n***********************************************************"
+                    + "\n*                                                         *"
+                    + "\n*      Combat Scene                                       *"
+                    + "\n*                                                         *");
 
-        
-        System.out.println("\n                                                          "
-                + "\n* A - Attack                                              *"
-                + "\n* D - Defend                                              *"
-                + "\n* I - Item                                                *"
-                + "\n* F - Flee                                                *"
-                + "\n*                                                         *"
-                + "\n***********************************************************"
-                + "\n***********************************************************");
+            // get Hero Current HP, attack and defense
+            System.out.println(EscapeIsland.getCurrentPlayer().getPlayersName() + "                                      " + monster.getActorName());
+            System.out.println("Hit Points: " + Actor.Hero.getActorHitPoints() + "                            " + "Hit Points: " + monster.getActorHitPoints());
+            System.out.println("Attack: " + BattleScene.totalAttack(Actor.Hero) + "                                 " + "Attack: " + BattleScene.totalAttack(monster));
+            System.out.println("Defense: " + BattleScene.totalDefense(Actor.Hero) + "                                " + "Defense: " + BattleScene.totalDefense(monster));
 
-       
-        Scanner sc = new Scanner(System.in);
+            System.out.println("\n                                                          "
+                    + "\n* A - Attack                                              *"
+                    + "\n* D - Defend                                              *"
+                    + "\n* I - Item                                                *"
+                    + "\n* F - Flee                                                *"
+                    + "\n*                                                         *"
+                    + "\n***********************************************************"
+                    + "\n***********************************************************");
+
+            Scanner sc = new Scanner(System.in);
             String talkToNPC = sc.nextLine();
 
             char combatOptions = talkToNPC.trim().toUpperCase().charAt(0);
@@ -166,55 +162,52 @@ public class InteractWithEnviromentView extends View {
                     break;
 
                 case 'F':
-                   return false;
+                    return false;
 
-              
                 default:
                     System.out.println("Invalid Option");
 
             }
-            
+
             if (combatAI(monster)) {
                 attack(monster, hero);
-            }
-            else {
+            } else {
                 defend(monster, hero);
             }
-            
-            if (BattleScene.death(Actor.Hero)) {
-                Actor.Hero.setActorCoordinates(new Point(7, 2));
-                Actor.Hero.setActorHitPoints(15);
-                return true;
-            }
-            
+
+ 
+
         }
-            return false;
-    }
-    
-     private void attack(Actor attacker, Actor defender) {
-        BattleScene.damageTaken(defender, BattleScene.calcDamage(BattleScene.totalAttack(attacker), BattleScene.totalDefense(defender)));
+        return false;
     }
 
-    private void defend(Actor hero, Actor monster) {
-        BattleScene.defense(hero, BattleScene.totalAttack(monster));
+    private void attack(Actor attacker, Actor defender) {
+        long damage = BattleScene.calcDamage(BattleScene.totalAttack(attacker), BattleScene.totalDefense(defender));
+        BattleScene.damageTaken(defender, damage);
+        System.out.println(attacker.getActorName() + " attacks " + defender.getActorName() + " for " + damage + " damage.");
+    }
+
+    private void defend(Actor defender, Actor attacker) {
+        long damage = BattleScene.defense(attacker, BattleScene.totalAttack(defender));
+        //BattleScene.damageTaken(defender, damage);
+        System.out.println(defender.getActorName() + " defends, It seems pointless.");
     }
 
     private void item() {
-        
+
     }
-    
+
     private boolean combatAI(Actor monster) {
-        
+
         Random combatAI = new Random();
-        
-        int n = combatAI.nextInt(2) + 1;
-        
-       if(n <= 1)
-           return true;
-       return false;
+
+        int n = combatAI.nextInt(3) + 1;
+
+        if (n <= 2) {
+            return true;
+        }
+        return false;
     }
-    
-    
 
     private void itemRequiredScene() {
 
@@ -254,7 +247,7 @@ public class InteractWithEnviromentView extends View {
         } catch (InventoryControlException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
         System.out.println("\n***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
@@ -370,6 +363,22 @@ public class InteractWithEnviromentView extends View {
     private void optionDChat() {
         System.out.println("Good bye");
         System.out.println("Marcus says \"God speed and good luck... you'll need it.\"");
+
+    }
+
+    private boolean deathScene(Actor hero, Actor monster) {
+
+        if (BattleScene.death(hero)) {
+            System.out.println("YOU HAVE DIED");
+            hero.setActorCoordinates(new Point(7, 2));
+            hero.setActorHitPoints(15);
+            return false;
+            
+        } else if (BattleScene.death(monster)) {
+            System.out.println("VICTORY!");
+            return false;
+        }
+        return true;
 
     }
 

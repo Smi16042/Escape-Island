@@ -42,7 +42,7 @@ public class GameControl {
         EscapeIsland.setCurrentGame(game);
         
         player.setActor(Actor.Hero);
-        
+        player.getActor().setActorName(player.getPlayersName());
         Riddle[] riddle = createRiddles();
         Map map;
        
