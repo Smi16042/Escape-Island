@@ -114,8 +114,7 @@ public class InteractWithEnviromentView extends View {
                 [Actor.Hero.getActorcoordinates().y];
         
         Actor monster = location.getActor();
-
-        while(!BattleScene.death(Actor.Hero) || !BattleScene.death(monster) ){
+        while(!(BattleScene.death(Actor.Hero) || BattleScene.death(monster)) ){
             
         Actor hero = EscapeIsland.getCurrentPlayer().getActor();
             
@@ -142,6 +141,7 @@ public class InteractWithEnviromentView extends View {
                 + "\n***********************************************************"
                 + "\n***********************************************************");
 
+       
         Scanner sc = new Scanner(System.in);
             String talkToNPC = sc.nextLine();
 

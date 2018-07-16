@@ -1192,7 +1192,7 @@ public class MapControl {
         location.setBackgroundType(BackgroundType.Bridge);
         location.setColumn(7);
         location.setRow(5);
-        location.setBlocked(false);
+        location.setBlocked(true);
         location.setComplete(false);
         location.setVisited(false);
         location.setDescription("Bridge");
