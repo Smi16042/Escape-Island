@@ -46,6 +46,24 @@ public class InventoryControl {
         
     }
     
+    public static void addItemToInventory (Actor player, Item thing)
+            throws InventoryControlException{
+        
+         if (player == null){
+             throw new InventoryControlException("actor is null");
+             }
+         
+         if (thing == null) {
+             throw new InventoryControlException("item does not exist");
+             }
+         
+         player.getActorItems().add(thing);
+         
+         
+         return;
+        
+    }
+    
     public static Item checkBestItem(Actor mark)
         throws InventoryControlException {
         

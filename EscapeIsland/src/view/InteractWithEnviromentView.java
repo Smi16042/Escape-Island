@@ -1,11 +1,15 @@
 package view;
 
+import control.InventoryControl;
 import escapeIsland.EscapeIsland;
+import exceptions.InventoryControlException;
 import java.util.Scanner;
 import model.*;
 import view.BattleScene.*;
 import java.util.Random;
 import java.awt.Point;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -244,6 +248,13 @@ public class InteractWithEnviromentView extends View {
         Location currentLocation
                 = EscapeIsland.getCurrentGame().getMap().getLocations()[Actor.Hero.getActorcoordinates().x][Actor.Hero.getActorcoordinates().y];
 
+        Actor player1 = EscapeIsland.getCurrentPlayer().getActor();
+        try {
+            InventoryControl.addItemToInventory(player1, currentLocation.getObtainItem());
+        } catch (InventoryControlException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
         System.out.println("\n***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"

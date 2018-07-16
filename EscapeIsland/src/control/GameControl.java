@@ -55,9 +55,7 @@ public class GameControl {
             game.setMap(map);
             
             game.getMap().setLocations(createLocations(10, 10, riddle));
-            new MapControl().assignActorsToLocations(new Map().getLocations());
-            new MapControl().assignItemsToLocations(game.getMap().getLocations());
-            
+         
             game.getMap().getLocations()[game.getPlayer().getActor().getActorcoordinates().x]
                   [game.getPlayer().getActor().getActorcoordinates().y].setVisited(true);
             

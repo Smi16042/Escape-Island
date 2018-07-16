@@ -470,6 +470,7 @@ public class MapControl {
         location.setRiddle(null);
         location.setItemRequired(null);
         location.setObtainItem(Item.Bat);
+        location.setObtainItem(Item.Key);
         location.setTalkToNPC(Actor.OldMan);
         
         location = new Location();
@@ -1192,7 +1193,7 @@ public class MapControl {
         location.setBackgroundType(BackgroundType.Bridge);
         location.setColumn(7);
         location.setRow(5);
-        location.setBlocked(false);
+        location.setBlocked(true);
         location.setComplete(false);
         location.setVisited(false);
         location.setDescription("Bridge");
@@ -1574,25 +1575,7 @@ public class MapControl {
 
 
 
-    public static void assignActorsToLocations(Location[][] hank)
-            throws MapControlException {
-        System.out.println("*** assignActorsToLocations called ***");
 
-        if (hank == null) {
-            System.out.println("hank is null");
-        }
-
-    }
-
-    public static void assignItemsToLocations(Location[][] locations)
-            throws MapControlException {
-        System.out.println("*** assignItemToLocations called ***");
-
-        if (locations == null) {
-            System.out.println("locations is null");
-        }
-
-    }
 
     public static Map getMap() {
         return map;
