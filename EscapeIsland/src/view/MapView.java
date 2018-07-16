@@ -7,6 +7,7 @@ import exceptions.MapControlException;
 import model.Player;
 import java.util.Scanner;
 import model.Actor;
+import model.Item;
 
 /**
  *
@@ -102,9 +103,22 @@ public class MapView extends View {
                 }
             }
             System.out.println("|\n -----------------------------------------");
-
+            
         }
-
+        
+                System.out.println("***********************************************************"
+                    + "\n***********************************************************"
+                    + "\n*                                                         *"
+                    + "\n* W - Move North                                          *"
+                    + "\n* A - Move West                                           *"
+                    + "\n* S - Move South                                          *"
+                    + "\n* D - Move East                                           *"
+                    + "\n* V - View Map                                            *"
+                    + "\n* E - Explore Scene                                       *"
+                    + "\n* Q - Quit to Main Menu                                   *"
+                    + "\n*                                                         *"
+                    + "\n***********************************************************"
+                    + "\n***********************************************************");    
     }
 
     public String[] getInputs() {
@@ -143,7 +157,15 @@ public class MapView extends View {
                 System.out.println(ex.getMessage());
             }
 
-        } else {
+        } 
+        else if(!(map.getLocations()[newRow][newColumn].getItemRequired() == null)){
+            if (player.getActor().getActorItems().contains(Item.Key) && map.getLocations()[newRow][newColumn].getItemRequired().equals(Item.Key)) {
+               map.getLocations()[newRow][newColumn].setBlocked(false);
+                System.out.println("your key unlocked this location");
+            } 
+        
+        }
+        else {
             System.out.println("The tile is blocked");
         }
     }
