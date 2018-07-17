@@ -80,8 +80,8 @@ public class GameControl {
             riddles[i] = new Riddle();
 
         }
-        riddles[0].setRiddle("What is the airspeed velocity of a north african swallow");
-        riddles[0].setAnswer("");
+        riddles[0].setRiddle("What is the airspeed velocity of an unladen european swallow");
+        riddles[0].setAnswer("11 meters per second");
 
         riddles[1].setRiddle("What always ends everything?");
         riddles[1].setAnswer("g");
