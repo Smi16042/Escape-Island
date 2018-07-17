@@ -22,7 +22,7 @@ public enum Actor implements Serializable {
  MonsterZombie("Zombie" , new Point(1,1),"a frightful zombie", 3, 2, 2, 10, Item.fisticuffs ),
  MonsterSkeleton("Skeleton" , new Point(1,1),"a terrifying skeleton", 2, 3, 2, 10, Item.fisticuffs ),
  MonsterGoblin("Goblin" , new Point(1,1),"a spooky goblin", 1, 1, 1, 10, Item.fisticuffs ),
- PrisonGuard("Erik" , new Point(2,2), "a tired prison guard", 2, 2, 1, 10, Item.fisticuffs ),
+ PrisonGuard("Erik" , new Point(2,2), "a tired prison guard", 2, 2, 1, 25, Item.fisticuffs ),
  Inmate02("Inmate02" , new Point(2,2), "an enraged prison inmate", 3, 3, 1, 10, Item.fisticuffs ),
  Inmate09("Inmate09" , new Point(2,2), "an enraged prison inmate", 2, 3, 1, 10, Item.fisticuffs ),
  Inmate08("Inmate08" , new Point(2,2), "an enraged prison inmate", 4, 1, 1, 10, Item.fisticuffs ),

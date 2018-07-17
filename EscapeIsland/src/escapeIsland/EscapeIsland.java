@@ -24,6 +24,10 @@ public class EscapeIsland {
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
 
+    private static PrintWriter logFile = null;
+    private static BufferedReader input;
+    private static PrintWriter output;
+    
     public static Game getCurrentGame() {
         return currentGame;
     }
@@ -42,10 +46,15 @@ public class EscapeIsland {
 
     public static void main(String[] args) {
 
+        
         try {
 
             EscapeIsland.inFile = new BufferedReader(new InputStreamReader(System.in));
             EscapeIsland.outFile = new PrintWriter(System.out, true);
+            
+            input = new BufferedReader(new InputStreamReader(System.in));
+            output = new PrintWriter(System.out, true);
+            logFile = new PrintWriter("logFile.txt");
 
             EscapeIsland adidas = new EscapeIsland();
             GameControl gameControl = new GameControl();
@@ -69,11 +78,15 @@ public class EscapeIsland {
                 if (EscapeIsland.outFile != null) {
                     EscapeIsland.outFile.close();
                 }
+                if(logFile != null){
+                logFile.close();
+                }
             } catch (IOException ex) {
                 System.out.println("Error closing files");
                 return;
             }
         }
+        
 
 
 
@@ -95,4 +108,29 @@ public class EscapeIsland {
     public static void setInFile(BufferedReader inFile) {
         EscapeIsland.inFile = inFile;
     }
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        EscapeIsland.logFile = logFile;
+    }
+
+    public static BufferedReader getInput() {
+        return input;
+    }
+
+    public static void setInput(BufferedReader input) {
+        EscapeIsland.input = input;
+    }
+
+    public static PrintWriter getOutput() {
+        return output;
+    }
+
+    public static void setOutput(PrintWriter output) {
+        EscapeIsland.output = output;
+    }
+    
 }

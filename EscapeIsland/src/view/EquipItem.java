@@ -11,20 +11,22 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.IOException;
 import model.*;
 
 /**
  *
  * @author Collin
  */
-public class EquipItem {
+public class EquipItem extends View {
 
-    private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
         String[] inputs = new String[1];
 
         //inputs = new String[1];
 
-        System.out.println("***********************************************************"
+        this.console.println("***********************************************************"
                        + "\n***********************************************************"
                        + "\n*                                                         *"
                        + "\n*                    Inventory Menu                       *"
@@ -36,13 +38,17 @@ public class EquipItem {
                        + "\n***********************************************************");
 
         String[] menuItem = new String[1];
-        Scanner sc = new Scanner(System.in);
-        menuItem[0] = sc.nextLine();
+        try {
+            menuItem[0] = this.keyboard.readLine();
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
       return menuItem;
     }
 
-    private boolean doAction(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
 
         char c = inputs[0].trim().toUpperCase().charAt(0);
 
@@ -56,7 +62,7 @@ public class EquipItem {
                 case 'Q':
                     return true;
                 default: 
-                    System.out.println("Invalid Option");
+                    this.console.println("Invalid Option");
             }
 
 
@@ -80,7 +86,7 @@ public class EquipItem {
         try {
             inventorycontrol.displayInventory(ralph);
         } catch (InventoryControlException ex) {
-            System.out.println(ex.getMessage());
+            this.console.println(ex.getMessage());
         }
      }
     
@@ -97,15 +103,17 @@ public class EquipItem {
         try {
             inventorycontrol.displayInventory(max);
         } catch (InventoryControlException ex) {
-            System.out.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(),
+                    "Error reading input " + ex.getMessage());
         }
         try {
             inventorycontrol.equipItem(max, Item.ToolKit);
         } catch (InventoryControlException ex) {
-            System.out.println(ex.getMessage());
+            this.console.println(ex.getMessage());ErrorView.display(this.getClass().getName(),
+                    "Error reading input " + ex.getMessage());
         }
         
-        System.out.println("Item Currently Equipped:");
-        System.out.println(max.getCurrentItem().getItemName());
+        this.console.println("Item Currently Equipped:");
+        this.console.println(max.getCurrentItem().getItemName());
 }
 }

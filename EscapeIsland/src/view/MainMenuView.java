@@ -19,7 +19,7 @@ public class MainMenuView extends View {
     public String[] getInputs() {
         String[] inputs = new String[1];
 
-        System.out.println("***********************************************************"
+        this.console.println("***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
                 + "\n* N - New Game                                            *"
@@ -32,8 +32,11 @@ public class MainMenuView extends View {
                 + "\n***********************************************************");
 
         String[] menuItem = new String[1];
-        Scanner sc = new Scanner(System.in);
-        menuItem[0] = sc.nextLine();
+        try {
+            menuItem[0] = this.keyboard.readLine();
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         return menuItem;
     }
@@ -69,7 +72,7 @@ public class MainMenuView extends View {
             case 'Q':
                 return true;
             default:
-                System.out.println("Invalid Option.");
+                this.console.println("Invalid Option.");
         }
 
         return false;
@@ -87,7 +90,8 @@ public class MainMenuView extends View {
             
 
         } catch (GameControlException ex) {
-            System.out.println(ex.getMessage());;
+            ErrorView.display(this.getClass().getName(),
+                    "Error reading input " + ex.getMessage());
         }
     }
 

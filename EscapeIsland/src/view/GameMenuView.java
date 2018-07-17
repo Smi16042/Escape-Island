@@ -34,7 +34,7 @@ public class GameMenuView extends View {
             case 'Q':
                 return true;
             default:
-                System.out.println("Invalid Option.");
+                this.console.println("Invalid Option.");
 
         }
 
@@ -88,7 +88,7 @@ public class GameMenuView extends View {
     }
 
     private void hints() {
-        System.out.println("\n***********************************************************"
+        this.console.println("\n***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
                 + "\n*                        Hints                            *"
