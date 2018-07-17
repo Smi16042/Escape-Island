@@ -38,7 +38,8 @@ public abstract class View implements ViewInterface {
             value = value.trim();
             this.console.println("");
             if (value.length() < 1) {
-                this.console.println("You must enter a non-blank value");
+                ErrorView.display(this.getClass().getName(),
+                    "You must enter a non-blank value");
 
                 continue;
             }

@@ -31,7 +31,9 @@ public class HelpMenuView extends View {
             case 'Q':
                 return true;
             default:
-                this.console.println("Invalid Option");
+                
+                ErrorView.display(this.getClass().getName(),
+                    "Invald menu option.");
         }
 
         return false;

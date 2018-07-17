@@ -33,28 +33,31 @@ public class InteractWithEnviromentView extends View {
                         return false;
                     }
                 } else {
-                    this.console.println("Invalid Option");
+                    ErrorView.display(this.getClass().getName(),
+                    "Invald menu option.");
                 }
                 break;
             case 'I':
                 if (currentLocation.getItemRequired() != null) {
                     itemRequiredScene();
-                } else {
-                    this.console.println("Invalid Option");
+                } else {ErrorView.display(this.getClass().getName(),
+                    "Invald menu option.");
                 }
                 break;
             case 'L':
                 if (currentLocation.getObtainItem() != null) {
                     getLoot();
                 } else {
-                    this.console.println("Invalid Option");
+                    ErrorView.display(this.getClass().getName(),
+                    "Invald menu option.");
                 }
                 break;
             case 'T':
                 if (currentLocation.getTalkToNPC() != null) {
                     talkToNPC();
                 } else {
-                    this.console.println("Invalid Option");
+                    ErrorView.display(this.getClass().getName(),
+                    "Invald menu option.");
                 }
                 break;
             case 'R':
@@ -62,13 +65,15 @@ public class InteractWithEnviromentView extends View {
                     riddle(EscapeIsland.getCurrentGame().getMap().getLocations()[(int) Actor.Hero.getActorcoordinates().getY()][(int) Actor.Hero.getActorcoordinates().getX()]
                             .getRiddle());
                 } else {
-                    this.console.println("Invalid Option");
+                    ErrorView.display(this.getClass().getName(),
+                    "Invald menu option.");
                 }
                 break;
             case 'M':
                 return true;
             default:
-                this.console.println("Invalid Option");
+                ErrorView.display(this.getClass().getName(),
+                    "Invald menu option.");
         }
 
         return false;
@@ -174,7 +179,8 @@ public class InteractWithEnviromentView extends View {
                     return false;
 
                 default:
-                    this.console.println("Invalid Option");
+                    ErrorView.display(this.getClass().getName(),
+                    "Invald menu option.");
 
             }
 
@@ -310,7 +316,8 @@ public class InteractWithEnviromentView extends View {
                     return true;
 
                 default:
-                    this.console.println("Invalid Option");
+                     ErrorView.display(this.getClass().getName(),
+                    "Invald menu option.");
 
             }
         }
@@ -363,7 +370,8 @@ public class InteractWithEnviromentView extends View {
             this.console.println("Correct!");
             riddle.setRiddleDone(true);
         } else {
-            this.console.println("Incorrect, try agian.");
+             ErrorView.display(this.getClass().getName(),
+                    "Incorrect");
         }
         return;
     }
@@ -406,7 +414,8 @@ public class InteractWithEnviromentView extends View {
             return false;
             
         } else if (BattleScene.death(monster)) {
-            this.console.println("VICTORY!");
+             this.console.println("VICTORY!");
+ 
             return false;
         }
         return true;

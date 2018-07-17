@@ -65,7 +65,8 @@ public class MapView extends View {
                 case 'Q':
                     return true;
                 default:
-                    this.console.println("Invalid Option.");
+                    ErrorView.display(this.getClass().getName(),
+                    "Invald menu option.");
 
             }
             map.getLocations()[player.getActor().getActorcoordinates().x][player.getActor().getActorcoordinates().y].setVisited(true);
@@ -172,7 +173,8 @@ public class MapView extends View {
         
         }
         else {
-            this.console.println("The tile is blocked");
+             ErrorView.display(this.getClass().getName(),
+                   "The tile is blocked");
         }
     }
 
@@ -191,7 +193,8 @@ public class MapView extends View {
             }
 
         } else {
-            this.console.println("The tile is blocked");
+             ErrorView.display(this.getClass().getName(),
+                    "The tile is blocked");
         }
     }
 
@@ -209,7 +212,8 @@ public class MapView extends View {
             }
 
         } else {
-            this.console.println("The tile is blocked");
+            ErrorView.display(this.getClass().getName(),
+                    "The tile is blocked");
         }
     }
 
@@ -229,7 +233,8 @@ public class MapView extends View {
             }
 
         } else {
-            this.console.println("The tile is blocked");
+            ErrorView.display(this.getClass().getName(),
+                    "The tile is blocked");
         }
 
     }
