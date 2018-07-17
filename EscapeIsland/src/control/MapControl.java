@@ -467,7 +467,7 @@ public class MapControl {
         location.setVisited(false);
         location.setDescription("Camp");
         location.setActor(null);
-        location.setRiddle(null);
+        location.setRiddle(riddle[1]);
         location.setItemRequired(null);
         location.setObtainItem(Item.Bat);
         location.setObtainItem(Item.Key);

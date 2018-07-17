@@ -108,14 +108,11 @@ public class GameControl {
         Riddle[] riddles = createRiddles();
         
         for(Riddle riddle : riddles){
-//            questionArrayList.add(riddle.getRiddle());//
             answerArrayList.add(riddle.getAnswer());
-  //          Collections.sort(questionArrayList);
             Collections.sort(answerArrayList);            
         }
         
         for (int i = 0; i < riddles.length; i++){
-        //System.out.println(questionArrayList.get(i));
         System.out.println(answerArrayList.get(i));
     }
      
