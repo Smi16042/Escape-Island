@@ -1,6 +1,7 @@
 
 package control;
 
+import escapeIsland.EscapeIsland;
 import exceptions.InventoryControlException;
 import java.util.ArrayList;
 import model.*;
