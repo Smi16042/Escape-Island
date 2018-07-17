@@ -27,7 +27,6 @@ import java.io.ObjectInputStream;
 public class GameControl {
 
     public static Player savePlayer(String playersName) {
-        // System.out.println("*** SavePlayer() called ***");
         Player player1 = new Player();
         player1.setPlayersName(playersName);
         EscapeIsland.setCurrentPlayer(player1);
@@ -37,7 +36,6 @@ public class GameControl {
 
     public static void createNewGame(Player player)
         throws GameControlException {
-        System.out.println("*** createNewGame called ***");
         if (player == null) {
             throw new GameControlException("player is null");
         }
@@ -76,8 +74,6 @@ public class GameControl {
     }
 
     public static Riddle[] createRiddles() {
-        System.out.println("*** createRiddles called ***");
-
         Riddle[] riddles = new Riddle[5];
 
         for (int i = 0; i < riddles.length; i++) {
