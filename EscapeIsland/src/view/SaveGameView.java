@@ -22,9 +22,10 @@ public class SaveGameView extends View {
 
     @Override
     public String[] getInputs() {
-        String[] inputs = new String[1];
 
-        System.out.println("***********************************************************"
+        String[] menuItem = new String[1];
+        Scanner sc = new Scanner(System.in);
+        menuItem[0] = this.getInput("***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
                 + "\n* S - Save Current Game                                   *"
@@ -32,10 +33,6 @@ public class SaveGameView extends View {
                 + "\n*                                                         *"
                 + "\n***********************************************************"
                 + "\n***********************************************************");
-
-        String[] menuItem = new String[1];
-        Scanner sc = new Scanner(System.in);
-        menuItem[0] = sc.nextLine();
 
         return menuItem;}
 

@@ -23,9 +23,12 @@ public class InteractWithEnviromentView extends View {
 
         Location currentLocation
                 = EscapeIsland.getCurrentGame().getMap().getLocations()[Actor.Hero.getActorcoordinates().x][Actor.Hero.getActorcoordinates().y];
-
+        if(inputs[0].trim().toUpperCase().equals("")){
+            System.out.println("please enter a value");
+            return false;
+        
+    }
         char interactionsMenu = inputs[0].trim().toUpperCase().charAt(0);
-
         switch (interactionsMenu) {
             case 'C':
                 if (currentLocation.getActor() != null) {
@@ -67,8 +70,9 @@ public class InteractWithEnviromentView extends View {
                 break;
             case 'M':
                 return true;
+                
             default:
-                this.console.println("Invalid Option");
+                return false;
         }
 
         return false;

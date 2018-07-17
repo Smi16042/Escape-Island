@@ -26,13 +26,13 @@ public abstract class View implements ViewInterface {
 
         boolean valid = false;
         String value = null;
-
+        
         while (!valid) {
             this.console.println(promptMessage);
             try {
                 value = this.keyboard.readLine();
             } catch (IOException ex) {
-                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                ex.getMessage();
             }
 
             value = value.trim();

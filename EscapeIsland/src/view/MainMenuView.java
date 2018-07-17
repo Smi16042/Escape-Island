@@ -32,11 +32,9 @@ public class MainMenuView extends View {
                 + "\n***********************************************************");
 
         String[] menuItem = new String[1];
-        try {
-            menuItem[0] = this.keyboard.readLine();
-        } catch (IOException ex) {
-            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+     
+            menuItem[0] = this.getInput("");
+        
 
         return menuItem;
     }
