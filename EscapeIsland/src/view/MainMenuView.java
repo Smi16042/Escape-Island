@@ -4,6 +4,10 @@ import control.GameControl;
 import escapeIsland.EscapeIsland;
 import java.util.Scanner;
 import exceptions.GameControlException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Austin
@@ -20,6 +24,7 @@ public class MainMenuView extends View {
                 + "\n*                                                         *"
                 + "\n* N - New Game                                            *"
                 + "\n* L - Load Game                                           *"
+                + "\n* S - Save Game                                           *"
                 + "\n* H - Help                                                *"
                 + "\n* Q - Quit                                                *"
                 + "\n*                                                         *"
@@ -42,7 +47,21 @@ public class MainMenuView extends View {
                 startNewGame();
                 break;
             case 'L':
+        {
+            try {
                 loadGame();
+            } catch (IOException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (GameControlException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+                break;
+            case 'S':
+                SaveGameView sg = new SaveGameView();
+                sg.display();
                 break;
             case 'H':
                 helpMenu();
@@ -72,8 +91,12 @@ public class MainMenuView extends View {
         }
     }
 
-    private void loadGame() {
-        System.out.println("Load a game.");
+    private void loadGame() throws IOException, GameControlException, FileNotFoundException, ClassNotFoundException {
+        System.out.println("enter file name");
+        GameControl.loadGame(this.keyboard.readLine());
+        System.out.println("game loaded");
+        GameMenuView mv = new GameMenuView();
+        mv.display();
     }
 
     private void helpMenu() {

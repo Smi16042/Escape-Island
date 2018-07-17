@@ -13,6 +13,13 @@ import java.util.List;
 import static control.MapControl.createLocations;
 import exceptions.GameControlException;
 import exceptions.MapControlException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 /**
  *
  * @author Austin
@@ -116,4 +123,51 @@ public class GameControl {
     
     }
   
+    
+    public static void setMonsterHealth()  {
+    Actor.Inmate02.setActorHitPoints(10);
+    Actor.Inmate08.setActorHitPoints(10);
+    Actor.Inmate09.setActorHitPoints(10);
+    Actor.MonsterGoblin.setActorHitPoints(10);
+    Actor.MonsterSkeleton.setActorHitPoints(10);
+    Actor.MonsterZombie.setActorHitPoints(10);
+    
+    }
+    
+    
+    
+    
+    
+    public static void saveGame(Game game, String filepath) 
+    throws GameControlException, FileNotFoundException, IOException{
+        if(game == null || filepath == null || filepath.length()<1) {
+            throw new GameControlException("game is null or filepath is not null");
+            
+        }
+        
+        FileOutputStream fl = new FileOutputStream(filepath);
+        ObjectOutputStream oo = new ObjectOutputStream(fl);
+        
+        oo.writeObject(EscapeIsland.getCurrentGame());
+    }
+    
+    public static void loadGame(String filepath) 
+    throws GameControlException, FileNotFoundException, IOException, ClassNotFoundException {
+        if(filepath == null) {
+            throw new GameControlException("can't find file");
+        }
+        
+        File aFile = new File("/Users/collin/NetBeansProjects/Escape-Island2/EscapeIsland/" + filepath + ".txt");
+        FileInputStream inputFile = null;
+         try { inputFile = new FileInputStream(aFile);
+             } catch (FileNotFoundException e) {
+       e.printStackTrace(System.err);
+    }
+        
+       ObjectInputStream ois = new ObjectInputStream(inputFile);
+       EscapeIsland.setCurrentGame((Game) ois.readObject());
+       EscapeIsland.setCurrentPlayer(EscapeIsland.getCurrentGame().getPlayer());
+       
+       
+    }
 }
