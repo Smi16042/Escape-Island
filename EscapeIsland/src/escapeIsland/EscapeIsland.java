@@ -56,13 +56,13 @@ public class EscapeIsland {
             output = new PrintWriter(System.out, true);
             logFile = new PrintWriter("logFile.txt");
 
-            EscapeIsland adidas = new EscapeIsland();
-            GameControl gameControl = new GameControl();
+            //EscapeIsland adidas = new EscapeIsland();
+            //GameControl gameControl = new GameControl();
 
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();
 
-            gameControl.riddleArrayList();
+            GameControl.riddleArrayList();
 
         } catch (Throwable e) {
             System.out.println("Exception: " + e.toString()

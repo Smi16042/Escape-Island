@@ -44,6 +44,14 @@ public class MainMenuView extends View {
 
         char c = inputs[0].trim().toUpperCase().charAt(0);
         switch (c) {
+            case'E':try{
+                throw new GameControlException("exception from menu");
+            }catch(GameControlException ex){
+                ErrorView.display(this.getClass().getName(),
+                    "Error reading input " + ex.getMessage());
+            }
+                  break;
+                
             case 'N':
                 startNewGame();
                 break;
@@ -70,7 +78,8 @@ public class MainMenuView extends View {
             case 'Q':
                 return true;
             default:
-                this.console.println("Invalid Option.");
+                ErrorView.display(this.getClass().getName(),
+                    "Invald menu option.");
         }
 
         return false;

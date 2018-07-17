@@ -59,8 +59,9 @@ public class EquipItem extends View {
                     break;
                 case 'Q':
                     return true;
-                default: 
-                    this.console.println("Invalid Option");
+                default:
+                    ErrorView.display(this.getClass().getName(),
+                    "Invald menu option.");
             }
 
 
