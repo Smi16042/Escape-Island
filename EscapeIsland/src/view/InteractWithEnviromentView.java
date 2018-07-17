@@ -332,12 +332,22 @@ public class InteractWithEnviromentView extends View {
     }
 
     private void riddle(Riddle riddle) {
-        this.console.println("\n***********************************************************"
+        
+        if(riddle.getRiddle() != null){
+            System.out.println(riddle.getRiddle());
+        }
+        
+        this.console.println
+        
+        
+        ("\n***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
                 + "\n*                                                         *"
-                + "\n* " + riddle
-                + "\n*                                                         *"
+                + "\n " + riddle.getRiddle()
+                
+                + "\n Please enter the answer."
+                       
                 + "\n*                                                         *"
                 + "\n***********************************************************"
                 + "\n***********************************************************");
@@ -349,7 +359,7 @@ public class InteractWithEnviromentView extends View {
             Logger.getLogger(InteractWithEnviromentView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (rScanner == riddle.getAnswer()) {
+        if (rScanner.equals(riddle.getAnswer())) {
             this.console.println("Correct!");
             riddle.setRiddleDone(true);
         } else {
@@ -401,6 +411,12 @@ public class InteractWithEnviromentView extends View {
         }
         return true;
 
+    }
+    
+    private void riddle(){
+       Location currentLocation = EscapeIsland.getCurrentGame().getMap().getLocations()[Actor.Hero.getActorcoordinates().x][Actor.Hero.getActorcoordinates().y];
+    
+       currentLocation.getRiddle();
     }
 
 }

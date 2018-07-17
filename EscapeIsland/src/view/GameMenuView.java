@@ -2,6 +2,7 @@ package view;
 
 import model.Map;
 import escapeIsland.EscapeIsland;
+import control.GameControl;
 
 /**
  *
@@ -24,9 +25,9 @@ public class GameMenuView extends View {
             case 'M':
                 moveToNewLocation();
                 break;
-//            case 'R':
-//                riddleHints();
-//                break;
+            case 'R':
+                riddleHints();
+                break;
             case 'H':
                 HelpMenuView help = new HelpMenuView();
                 help.display();
@@ -52,6 +53,7 @@ public class GameMenuView extends View {
                     + "\n* E - Interact With Enviroment                            *"
                     + "\n* M - Move to new location                                *"
                     + "\n* H - Help                                                *"
+                    + "\n* R - Riddle Hints                                        *"
                     + "\n* Q - Quit to Main Menu                                   *"
                     + "\n*                                                         *"
                     + "\n***********************************************************"
@@ -101,9 +103,10 @@ public class GameMenuView extends View {
         return;
     }
 
-//    private void riddleHints() {
-//        // display a list of all the riddles, and the answers.
-//        EscapeIsland.getCurrentGame().riddleArrayList();
-//    }
-
+    private void riddleHints() {
+        // display a list of all the riddles, and the answers.
+        GameControl.riddleArrayList();
+    }
 }
+
+
