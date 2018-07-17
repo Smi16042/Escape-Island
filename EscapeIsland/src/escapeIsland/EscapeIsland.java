@@ -54,8 +54,8 @@ public class EscapeIsland {
             
             input = new BufferedReader(new InputStreamReader(System.in));
             output = new PrintWriter(System.out, true);
-            
             logFile = new PrintWriter("logFile.txt");
+
             EscapeIsland adidas = new EscapeIsland();
             GameControl gameControl = new GameControl();
 
