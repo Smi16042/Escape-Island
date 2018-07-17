@@ -42,13 +42,13 @@ public class StartProgramView extends View {
     public boolean doAction(String[] inputs) {
         
         if (inputs[0] == null) {
-            System.out.println("Could not create the player. "
+            this.console.println("Could not create the player. "
                     + "Enter a diferent name.");
             return false;
         }
         
         Player player = GameControl.savePlayer(inputs[0]);
-        System.out.println("==========================================================="
+        this.console.println("==========================================================="
                 + "\n==========================================================="
                 + "\n                                                           "
                 + "\nWelcome to the game " + player.getPlayersName() + ". "

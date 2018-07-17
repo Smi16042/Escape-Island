@@ -2,8 +2,11 @@ package view;
 
 import escapeIsland.EscapeIsland;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Austin
@@ -21,18 +24,21 @@ public abstract class View implements ViewInterface {
    
     public String getInput(String promptMessage) {
 
-        Scanner sc = new Scanner(System.in);
         boolean valid = false;
-        String value = "";
+        String value = null;
 
-        while (valid == false) {
-            System.out.println(promptMessage);
-            value = sc.nextLine();
+        while (!valid) {
+            this.console.println(promptMessage);
+            try {
+                value = this.keyboard.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             value = value.trim();
-            System.out.println("");
+            this.console.println("");
             if (value.length() < 1) {
-                System.out.println("You must enter a non-blank value");
+                this.console.println("You must enter a non-blank value");
 
                 continue;
             }

@@ -31,7 +31,7 @@ public class HelpMenuView extends View {
             case 'Q':
                 return true;
             default:
-                System.out.println("Invalid Option");
+                this.console.println("Invalid Option");
         }
 
         return false;
@@ -58,7 +58,7 @@ public class HelpMenuView extends View {
     }
 
     private void battleSystem() {
-        System.out.println("\n***********************************************************"
+        this.console.println("\n***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
                 + "\n*                 The Battle System                       *"
@@ -76,7 +76,7 @@ public class HelpMenuView extends View {
     }
 
     private void hints() {
-        System.out.println("\n***********************************************************"
+        this.console.println("\n***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
                 + "\n*                        Hints                            *"
@@ -90,7 +90,7 @@ public class HelpMenuView extends View {
     }
 
     private void displayHelpControls() {
-        System.out.println("\n***********************************************************"
+        this.console.println("\n***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
                 + "\n*                        Controls                         *"
@@ -128,7 +128,7 @@ public class HelpMenuView extends View {
     }
 
     private void displayHelpStory() {
-        System.out.println("\n***********************************************************"
+        this.console.println("\n***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
                 + "\n*                        Story                            *"

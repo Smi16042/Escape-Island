@@ -35,14 +35,16 @@ public class InventoryView extends View {
                 try {
                     InventoryControl.equipItem(EscapeIsland.getCurrentGame().getPlayer().getActor(), InventoryControl.checkBestItem(EscapeIsland.getCurrentGame().getPlayer().getActor()));
                 } catch (InventoryControlException ex) {
-                    System.out.println(ex.getMessage());
+                    ErrorView.display(this.getClass().getName(),
+                    "Error reading input " + ex.getMessage());
                 }
             }
              {
                 try {
-                    System.out.println(InventoryControl.checkBestItem(EscapeIsland.getCurrentGame().getPlayer().getActor()));
+                    this.console.println(InventoryControl.checkBestItem(EscapeIsland.getCurrentGame().getPlayer().getActor()));
                 } catch (InventoryControlException ex) {
-                    System.out.println(ex.getMessage());
+                    ErrorView.display(this.getClass().getName(),
+                    "Error reading input " + ex.getMessage());
                 }
             }
             break;
@@ -54,14 +56,16 @@ public class InventoryView extends View {
                 try {
                     num = parseInt(c);
                 } catch (NumberFormatException ex) {
-                    System.out.println(ex.getMessage());
+                    ErrorView.display(this.getClass().getName(),
+                    "Error reading input " + ex.getMessage());
                
                 }
             try {
                 InventoryControl.equipItem(currentPlayer,currentPlayer.getActorItems().get(num-1));
-                System.out.println(currentPlayer.getActorItems().get(num-1).getItemName() + " equipped!");
+                this.console.println(currentPlayer.getActorItems().get(num-1).getItemName() + " equipped!");
             } catch (InventoryControlException ex) {
-                System.out.println(ex.getMessage());
+                ErrorView.display(this.getClass().getName(),
+                    "Error reading input " + ex.getMessage());
             }
             }
 
@@ -84,23 +88,23 @@ public class InventoryView extends View {
         inventory.add(Item.Sword);
 
         // --- End of to do later
-        System.out.println(
+        this.console.println(
                 "***********************************************************"
                 + "\n***********************************************************"
                 + "\n*                                                         *"
                 + "\n*                    Inventory Menu                       *");
 
-        System.out.println("* ");
+        this.console.println("* ");
         int num = 0;
         for (Item item : inventory) {
 
             num++; // add one to item number
-            System.out.println(num + " - " + item.getItemName());
+            this.console.println(num + " - " + item.getItemName());
         }
 
-        System.out.println("\n* G - Equip Best Item");
+        this.console.println("\n* G - Equip Best Item");
 
-        System.out.println(
+        this.console.println(
                 "\n* Q - Quit to Game Menu                                   *"
                 + "\n*                                                         *"
                 + "\n***********************************************************"
@@ -111,15 +115,16 @@ public class InventoryView extends View {
         return inputs;
     }
 
-    public static void equipItem(Actor actor, Item item) {
+    public void equipItem(Actor actor, Item item) {
         try {
 
             InventoryControl.equipItem(actor, item);
 
-            System.out.println("You now have the " + item.getItemName() + " in your hands");
+            this.console.println("You now have the " + item.getItemName() + " in your hands");
 
         } catch (InventoryControlException ex) {
-            System.out.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(),
+                    "Error reading input " + ex.getMessage());
         }
 
     }
