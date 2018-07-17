@@ -77,9 +77,6 @@ public class MapView extends View {
     public void displayMap(Map map) {
 
         Location[][] locations = map.getLocations();
-
-        this.console.println("*** displayMap called ***");
-
         this.console.println("     Mysterious Island");
 
         this.console.print("  ");

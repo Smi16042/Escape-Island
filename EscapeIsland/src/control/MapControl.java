@@ -18,8 +18,6 @@ public class MapControl {
 
     public static Map createMap(Game game, int numOfRows, int numOfColumns)
             throws MapControlException {
-        System.out.println("*** createMap called ***");
-
         // check for invalid inputs
         if (game == null || numOfRows < 0 || numOfColumns < 0) {
             throw new MapControlException("actor is null");
@@ -38,8 +36,6 @@ public class MapControl {
 
     public static Location[][] createLocations(int rows, int columns, Riddle[] riddle)
             throws MapControlException {
-        System.out.println("*** createLocations called ***");
-
         Location[][] locations = new Location[rows][columns];
 
         if (rows < 0 || columns < 0) {
