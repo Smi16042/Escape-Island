@@ -1,5 +1,10 @@
 package view;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Actor;
 import model.*;
 
 /**
@@ -7,7 +12,6 @@ import model.*;
  * @author Austin
  */
 public class HelpMenuView extends View {
-
 
     public boolean doAction(String[] inputs) {
 
@@ -28,12 +32,22 @@ public class HelpMenuView extends View {
             case 'B':
                 battleSystem();
                 break;
+            case 'P':
+        {
+            try {
+                printReport();
+            } catch (IOException ex) {
+                Logger.getLogger(HelpMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+                break;
+
             case 'Q':
                 return true;
             default:
-                
+
                 ErrorView.display(this.getClass().getName(),
-                    "Invald menu option.");
+                        "Invald menu option.");
         }
 
         return false;
@@ -52,6 +66,7 @@ public class HelpMenuView extends View {
                 + "\n* H - Hints                                               *"
                 + "\n* B - Battle System                                       *"
                 + "\n* Q - Quit to Main Menu                                   *"
+                + "\n* P - Print report                                        *"
                 + "\n*                                                         *"
                 + "\n***********************************************************"
                 + "\n***********************************************************");
@@ -156,4 +171,51 @@ public class HelpMenuView extends View {
                 + "\n***********************************************************");
         return;
     }
-}
+
+ 
+
+    private void printReport() throws IOException {
+        System.out.println("Please enter the file path");
+        
+        FileWriter listFile = null;
+        
+        try {
+            String playerInput = this.keyboard.readLine();
+            String newLine = System.getProperty("line.seperator");
+            listFile = new FileWriter(playerInput);
+           
+            listFile.write("\tMonster List" 
+                    + System.lineSeparator()
+                    + "Monsters"
+                    + System.lineSeparator());
+            
+            
+            for (Actor monster: Actor.values() ){
+
+                listFile.write(monster.getActorName() + " "
+                        + monster.getActorDescription() + " "
+                        + monster.getActorHitPoints() + " "
+                        + monster.getActorAttack() + " "
+                        + monster.getActorDefense() + " "
+                        + monster.getActorSpeed()
+                        + System.lineSeparator());
+                
+                       
+                        }
+            
+            
+        } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(),
+                    "Error reading input " + ex.getMessage());
+        } finally {
+            if(listFile != null) {
+                listFile.close();
+                System.out.println("Success!");
+            }
+        } 
+    } 
+        
+        
+        
+    }
+
